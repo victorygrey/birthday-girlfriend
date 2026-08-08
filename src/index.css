@@ -1,17 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --rose-50: #fff7f8;
+  --rose-100: #ffe7ec;
+  --rose-200: #ffd7df;
+  --rose-300: #f5bfd0;
+  --rose-400: #e8a8bc;
+  --rose-500: #d891aa;
+  --rose-700: #8b4049;
+  --rose-800: #6b2f3b;
+  --peach-100: #fff3ee;
+  --peach-200: #f9e5d8;
+  --gold-200: #f6dfb5;
+  --brown-800: #4a2d2c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(255, 236, 240, 0.95), rgba(255, 244, 249, 0.7) 35%, rgba(255, 250, 244, 0.95) 100%);
+  color: var(--brown-800);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
+#root {
+  min-height: 100vh;
+}
+
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(139, 64, 73, 0.18);
+  color: #4a2d2c;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.romantic-orb {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.romantic-glow {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+.romantic-panel {
+  background: rgba(255, 251, 245, 0.78);
+  border: 1px solid rgba(139, 64, 73, 0.18);
+  box-shadow: 0 30px 80px rgba(139, 64, 73, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.romantic-button {
+  box-shadow: 0 18px 35px rgba(139, 64, 73, 0.28);
+}
+
+.romantic-button:hover {
+  box-shadow: 0 24px 50px rgba(139, 64, 73, 0.35);
+}
+
+.romantic-card {
+  border: 1px solid rgba(139, 64, 73, 0.14);
+  box-shadow: 0 24px 48px rgba(74, 45, 44, 0.08);
+}
+
+.heart-pattern {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), transparent 25%),
+    radial-gradient(circle at 80% 15%, rgba(255,214,222,0.8), transparent 22%),
+    radial-gradient(circle at 50% 80%, rgba(254,221,226,0.8), transparent 30%);
 }

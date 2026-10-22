@@ -1,126 +1,143 @@
 import { motion } from 'framer-motion';
-import { Heart, Sparkles } from 'lucide-react';
+import { Sparkles, Heart } from 'lucide-react';
 
 export default function Opening({ onOpen }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fffaf8] via-[#fff1f4] to-[#fde7ee] relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="romantic-orb absolute -top-20 left-10 h-56 w-56 rounded-full bg-[#ffdfe7]/70 blur-3xl" />
-        <div className="romantic-orb absolute bottom-0 right-8 h-64 w-64 rounded-full bg-[#f7d7d7]/70 blur-3xl" style={{ animationDelay: '1.5s' }} />
-        <div className="romantic-glow absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.9),_transparent_55%)]" />
-
-        {[...Array(25)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-[#d48ea4] opacity-25"
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-            }}
-            animate={{
-              y: [null, Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)],
-              x: [null, Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000)],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          >
-            <Heart size={Math.random() * 20 + 10} fill="currentColor" />
-          </motion.div>
-        ))}
-
-        {[...Array(18)].map((_, i) => (
-          <motion.div
-            key={`sparkle-${i}`}
-            className="absolute text-burgundy/15"
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-            }}
-            animate={{
-              scale: [1, 1.7, 1],
-              opacity: [0.15, 0.35, 0.15],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          >
-            <Sparkles size={Math.random() * 16 + 8} />
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-[#fff4f2]/60"></div>
-
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 relative z-10">
       <motion.div
-        className="relative z-10 text-center px-4 sm:px-6 max-w-xl mx-auto"
-        initial={{ opacity: 0, y: 20 }}
+        className="w-full max-w-xl mx-auto text-center"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
-        <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="mb-6 sm:mb-8"
-        >
+        {/* Luxury Invitation Card Container */}
+        <div className="relative p-7 sm:p-12 rounded-3xl luxury-glass-card overflow-hidden">
+          {/* Subtle Golden Ornaments / Corner Filigrees */}
+          <div className="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-[#d4af37]/70 rounded-tl-lg pointer-events-none" />
+          <div className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-[#d4af37]/70 rounded-tr-lg pointer-events-none" />
+          <div className="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-[#d4af37]/70 rounded-bl-lg pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-[#d4af37]/70 rounded-br-lg pointer-events-none" />
+
+          {/* Top Badge */}
           <motion.div
-            className="text-7xl sm:text-8xl md:text-[9rem] mb-3 sm:mb-4 filter drop-shadow-[0_18px_40px_rgba(139,64,73,0.25)]"
-            animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.06, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcedc7]/60 border border-[#d4af37]/40 mb-6 text-[#8a650c]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
           >
-            💌
+            <Sparkles size={14} className="text-[#c59b27] animate-pulse" />
+            <span className="text-[11px] sm:text-xs font-royal tracking-[0.25em] uppercase font-bold text-[#8a650c]">
+              An Exclusive Invitation
+            </span>
+            <Sparkles size={14} className="text-[#c59b27] animate-pulse" />
           </motion.div>
-        </motion.div>
 
-        <motion.p
-          className="text-burgundy/70 text-xs sm:text-sm mb-3 font-body tracking-[0.25em] uppercase"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          A little something for you...
-        </motion.p>
-
-        <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display text-burgundy mb-8 sm:mb-10 leading-tight"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-        >
-          For You <span className="inline-block">❤️</span>
-        </motion.h1>
-
-        <motion.p
-          className="mx-auto max-w-md text-sm sm:text-base md:text-lg text-dark-brown/75 mb-8 font-body leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
-        >
-          A little world made of love, memories, and the sweetest birthday wishes just for you.
-        </motion.p>
-
-        <motion.button
-          onClick={onOpen}
-          className="romantic-button group relative overflow-hidden rounded-full bg-gradient-to-r from-[#8b4049] via-[#af5a67] to-[#8b4049] px-8 py-3 text-base font-medium text-[#fffaf8] shadow-xl sm:px-10 sm:py-4 sm:text-lg"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className="relative z-10">Open Letter</span>
+          {/* Golden Royal Crest / Wax Seal Centerpiece */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-[#f7d1d9] via-[#ffe6eb] to-[#f7d1d9] opacity-0 group-hover:opacity-20"
-            initial={{ x: '-100%' }}
-            whileHover={{ x: '100%' }}
-            transition={{ duration: 0.7 }}
-          />
-        </motion.button>
+            className="relative mx-auto mb-7 w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.4, type: "spring", stiffness: 120 }}
+          >
+            {/* Pulsing Aura */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#f5d061]/35 to-[#e84368]/25 blur-xl animate-pulse" />
+
+            {/* Concentric Gold Rings */}
+            <div className="absolute inset-0 rounded-full border border-[#d4af37]/40 animate-[spin_20s_linear_infinite]" />
+            <div className="absolute inset-2 rounded-full border border-dashed border-[#d4af37]/35 animate-[spin_25s_linear_infinite_reverse]" />
+
+            {/* Wax Seal Core */}
+            <motion.div
+              className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full wax-seal flex flex-col items-center justify-center cursor-pointer select-none"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              animate={{
+                boxShadow: [
+                  '0 10px 25px rgba(90, 15, 30, 0.35)',
+                  '0 15px 35px rgba(212, 175, 55, 0.45)',
+                  '0 10px 25px rgba(90, 15, 30, 0.35)',
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              <Heart size={26} className="text-[#fff5ea] fill-[#fff5ea] drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]" />
+              <span className="text-[9px] font-royal tracking-widest text-[#fff5ea] font-bold mt-1 uppercase">
+                Special
+              </span>
+            </motion.div>
+          </motion.div>
+
+          {/* Script Subheading */}
+          <motion.p
+            className="font-cursive text-3xl sm:text-4xl text-[#942539] mb-1 leading-tight"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            Untuk Bidadari Tercantikku,
+          </motion.p>
+
+          {/* Main Title */}
+          <motion.h1
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#3d141d] leading-tight"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+          >
+            Happy Birthday, <span className="gold-gradient-text block sm:inline font-serif font-bold">Sayang ❤️</span>
+          </motion.h1>
+
+          {/* Romantic Divider */}
+          <div className="flex items-center justify-center gap-3 my-5">
+            <span className="h-[1px] w-14 bg-gradient-to-r from-transparent to-[#d4af37]" />
+            <Heart size={14} className="text-[#8f1930] fill-[#8f1930]" />
+            <span className="h-[1px] w-14 bg-gradient-to-l from-transparent to-[#d4af37]" />
+          </div>
+
+          {/* Description */}
+          <motion.p
+            className="font-body text-sm sm:text-base text-[#612933] max-w-md mx-auto leading-relaxed mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            Sebuah lembaran khusus yang kuciptakan penuh cinta, berisi kenangan manis dan doa terbaikku di hari kelahiranmu.
+          </motion.p>
+
+          {/* Open Invitation Button */}
+          <motion.button
+            onClick={onOpen}
+            className="luxury-gold-button relative overflow-hidden px-8 sm:px-12 py-3.5 sm:py-4 rounded-full text-base sm:text-lg font-royal tracking-wider font-semibold group cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2.5">
+              <span>Buka Surat Cinta</span>
+              <motion.span
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                💌
+              </motion.span>
+            </span>
+
+            {/* Shimmer light sweep */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+          </motion.button>
+
+          {/* Footnote */}
+          <motion.p
+            className="mt-6 text-[11px] font-royal tracking-widest text-[#8a650c]/80 uppercase"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.4 }}
+          >
+            ✨ Sentuh untuk membuka & dengarkan lagunya ✨
+          </motion.p>
+        </div>
       </motion.div>
     </div>
   );

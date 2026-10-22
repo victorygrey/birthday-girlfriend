@@ -1,22 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Direct Font Class Definitions to guarantee 100% rendering across all browsers */
+.font-royal {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+.font-cursive {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-serif {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
 :root {
-  --rose-50: #fff7f8;
-  --rose-100: #ffe7ec;
-  --rose-200: #ffd7df;
-  --rose-300: #f5bfd0;
-  --rose-400: #e8a8bc;
-  --rose-500: #d891aa;
-  --rose-700: #8b4049;
-  --rose-800: #6b2f3b;
-  --peach-100: #fff3ee;
-  --peach-200: #f9e5d8;
-  --gold-200: #f6dfb5;
-  --brown-800: #4a2d2c;
+  --color-gold: #c59b27;
+  --color-gold-light: #f5e4bc;
+  --color-wine: #5c1825;
+  --color-text-main: #3d141d;
+  --color-text-muted: #6e3a45;
 }
 
 html {
@@ -25,10 +35,9 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(255, 236, 240, 0.95), rgba(255, 244, 249, 0.7) 35%, rgba(255, 250, 244, 0.95) 100%);
-  color: var(--brown-800);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #fffaf7;
+  color: #3d141d;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -38,56 +47,151 @@ body {
   min-height: 100vh;
 }
 
-* {
-  box-sizing: border-box;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf5f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4a5af;
+  border-radius: 9999px;
+  border: 2px solid #fdf5f2;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c59b27;
 }
 
-::selection {
-  background: rgba(139, 64, 73, 0.18);
-  color: #4a2d2c;
+/* Luxury Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #b8860b 0%, #d4af37 40%, #996515 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+.rose-gold-gradient-text {
+  background: linear-gradient(135deg, #5c1825 0%, #9e2a40 50%, #d47a8d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-@keyframes pulse-soft {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+/* Soft Luxury Glassmorphism */
+.luxury-glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 
+    0 25px 60px -15px rgba(120, 30, 50, 0.12),
+    0 10px 25px -5px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
 }
 
-.romantic-orb {
-  animation: float-slow 8s ease-in-out infinite;
+.luxury-glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px -5px rgba(100, 20, 40, 0.1);
 }
 
-.romantic-glow {
-  animation: pulse-soft 4s ease-in-out infinite;
+/* Luxury Parchment for Letter */
+.parchment-texture {
+  background-color: #fffdf9;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9), rgba(255, 250, 242, 0.95)),
+    radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.06), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(216, 115, 137, 0.06), transparent 45%);
+  box-shadow: 
+    0 25px 60px -12px rgba(90, 20, 35, 0.14),
+    0 0 0 1px rgba(212, 175, 55, 0.4),
+    inset 0 0 60px rgba(240, 220, 200, 0.35);
 }
 
-.romantic-panel {
-  background: rgba(255, 251, 245, 0.78);
-  border: 1px solid rgba(139, 64, 73, 0.18);
-  box-shadow: 0 30px 80px rgba(139, 64, 73, 0.12);
-  backdrop-filter: blur(12px);
+/* Wax Seal Style */
+.wax-seal {
+  background: radial-gradient(circle at 35% 35%, #c8324e, #8f1930 65%, #630c1e 100%);
+  box-shadow: 
+    0 10px 25px rgba(90, 15, 30, 0.35),
+    inset 0 2px 4px rgba(255, 220, 230, 0.6),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(245, 220, 150, 0.6);
 }
 
-.romantic-button {
-  box-shadow: 0 18px 35px rgba(139, 64, 73, 0.28);
+/* Luxury Shimmer Buttons */
+.luxury-gold-button {
+  background: linear-gradient(135deg, #c59b27 0%, #e2be58 40%, #b8861b 80%, #8a650c 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 
+    0 12px 30px -5px rgba(197, 155, 39, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.romantic-button:hover {
-  box-shadow: 0 24px 50px rgba(139, 64, 73, 0.35);
+.luxury-gold-button:hover {
+  box-shadow: 
+    0 18px 40px -5px rgba(197, 155, 39, 0.65),
+    0 0 20px rgba(226, 190, 88, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
 }
 
-.romantic-card {
-  border: 1px solid rgba(139, 64, 73, 0.14);
-  box-shadow: 0 24px 48px rgba(74, 45, 44, 0.08);
+.luxury-wine-button {
+  background: linear-gradient(135deg, #781829 0%, #942539 45%, #61111f 100%);
+  color: #fffdfa;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 
+    0 12px 30px -5px rgba(120, 24, 41, 0.35),
+    inset 0 1px 1px rgba(255, 210, 220, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.heart-pattern {
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), transparent 25%),
-    radial-gradient(circle at 80% 15%, rgba(255,214,222,0.8), transparent 22%),
-    radial-gradient(circle at 50% 80%, rgba(254,221,226,0.8), transparent 30%);
+.luxury-wine-button:hover {
+  box-shadow: 
+    0 18px 40px -5px rgba(120, 24, 41, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.3),
+    inset 0 1px 2px rgba(255, 230, 240, 0.6);
+  transform: translateY(-2px);
 }
+
+/* Candle Animations */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 12px rgba(255, 170, 40, 0.9));
+  }
+  25% {
+    transform: scale(1.08, 0.95) rotate(2deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(255, 200, 60, 1));
+  }
+  50% {
+    transform: scale(0.95, 1.05) rotate(-2deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(255, 150, 30, 0.85));
+  }
+  75% {
+    transform: scale(1.03, 0.98) rotate(1deg);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 15px rgba(255, 190, 50, 0.95));
+  }
+}
+
+.candle-flame {
+  animation: flameFlicker 1.8s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* Soft Ambient Floating Orbs */
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+  33% { transform: translateY(-25px) translateX(20px) scale(1.04); }
+  66% { transform: translateY(20px) translateX(-15px) scale(0.96); }
+}
+
+.ambient-orb-1 { animation: floatOrb 16s ease-in-out infinite; }
+.ambient-orb-2 { animation: floatOrb 20s ease-in-out infinite reverse; }
+.ambient-orb-3 { animation: floatOrb 24s ease-in-out infinite 3s; }
